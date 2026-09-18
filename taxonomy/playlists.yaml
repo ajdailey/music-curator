@@ -1,0 +1,453 @@
+playlists:
+- name: Rock Library
+  type: genre
+  match_any_tags:
+  - rock
+  ordering:
+    strategy: interleaved
+    seed: rock-library-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Jazz Library
+  type: genre
+  match_any_tags:
+  - jazz
+  ordering:
+    strategy: interleaved
+    seed: jazz-library-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: 80s Alternative
+  type: genre
+  match_any_tags:
+  - college-rock
+  - jangle-pop
+  - new-wave
+  ordering:
+    strategy: interleaved
+    seed: 80s-alternative-v1
+- name: 90s Alternative
+  type: genre
+  match_any_tags:
+  - grunge
+  - britpop
+  include_artists:
+  - Radiohead
+  - Live
+  - Matthew Sweet
+  - The Lemonheads
+  - Gin Blossoms
+  ordering:
+    strategy: interleaved
+    seed: 90s-alternative-v1
+- name: Alt Country
+  type: genre
+  match_any_tags:
+  - alt-country
+  ordering:
+    strategy: interleaved
+    seed: alt-country-v1
+- name: Progressive Rock
+  type: genre
+  match_any_tags:
+  - progressive-rock
+  ordering:
+    strategy: interleaved
+    seed: progressive-rock-v1
+- name: Heartland Rock
+  type: genre
+  match_any_tags:
+  - heartland-rock
+  ordering:
+    strategy: interleaved
+    seed: heartland-rock-v1
+- name: Jazz Essentials
+  type: curated
+  include_artists:
+  - Miles Davis
+  - John Coltrane
+  - Duke Ellington
+  - Charlie Parker
+  - Thelonious Monk
+  - Bill Evans
+  - Art Blakey & The Jazz Messengers
+  - Herbie Hancock
+  - Wayne Shorter
+  - Charles Mingus
+  ordering:
+    strategy: curated_sequence
+    seed: jazz-essentials-v1
+- name: Blue Note Classics
+  type: label
+  match_all_tags:
+  - blue-note-label
+  ordering:
+    strategy: interleaved
+    seed: blue-note-classics-v1
+- name: Hard Bop
+  type: genre
+  match_all_tags:
+  - hard-bop
+  ordering:
+    strategy: interleaved
+    seed: hard-bop-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Bebop
+  type: genre
+  match_all_tags:
+  - bebop
+  ordering:
+    strategy: interleaved
+    seed: bebop-v1
+- name: Cool Jazz
+  type: genre
+  match_all_tags:
+  - cool-jazz
+  ordering:
+    strategy: interleaved
+    seed: cool-jazz-v1
+- name: Modal Jazz
+  type: genre
+  match_all_tags:
+  - modal-jazz
+  ordering:
+    strategy: interleaved
+    seed: modal-jazz-v1
+- name: Post-Bop
+  type: genre
+  match_all_tags:
+  - post-bop
+  ordering:
+    strategy: interleaved
+    seed: post-bop-v1
+- name: Soul Jazz
+  type: genre
+  match_all_tags:
+  - soul-jazz
+  ordering:
+    strategy: interleaved
+    seed: soul-jazz-v1
+- name: Jazz Fusion
+  type: genre
+  match_all_tags:
+  - jazz-fusion
+  ordering:
+    strategy: interleaved
+    seed: jazz-fusion-v1
+- name: Guitar Jazz
+  type: instrumentation
+  match_all_tags:
+  - guitar-jazz
+  ordering:
+    strategy: interleaved
+    seed: guitar-jazz-v1
+- name: Piano Jazz
+  type: instrumentation
+  match_all_tags:
+  - piano-jazz
+  ordering:
+    strategy: interleaved
+    seed: piano-jazz-v1
+- name: Late Night Jazz
+  type: curated
+  match_all_tags:
+  - jazz
+  - mood-late-night
+  exclude_flags:
+  - live
+  ordering:
+    strategy: curated_sequence
+    seed: late-night-jazz-v1
+- name: Grunge
+  type: genre
+  match_any_tags:
+  - grunge
+  ordering:
+    strategy: interleaved
+    seed: grunge-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Seattle Sound
+  type: scene
+  match_any_tags:
+  - seattle-scene
+  ordering:
+    strategy: interleaved
+    seed: seattle-sound-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: 90s Rock
+  type: genre
+  match_any_tags:
+  - 90s-rock
+  ordering:
+    strategy: interleaved
+    seed: 90s-rock-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: College Rock
+  type: genre
+  match_any_tags:
+  - college-rock
+  ordering:
+    strategy: interleaved
+    seed: college-rock-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Britpop
+  type: genre
+  match_any_tags:
+  - britpop
+  ordering:
+    strategy: interleaved
+    seed: britpop-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Indie Rock
+  type: genre
+  match_any_tags:
+  - indie-rock
+  ordering:
+    strategy: interleaved
+    seed: indie-rock-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Classic Rock
+  type: genre
+  match_any_tags:
+  - classic-rock
+  ordering:
+    strategy: interleaved
+    seed: classic-rock-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Blues Rock
+  type: genre
+  match_any_tags:
+  - blues-rock
+  ordering:
+    strategy: interleaved
+    seed: blues-rock-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Southern Rock
+  type: genre
+  match_any_tags:
+  - southern-rock
+  ordering:
+    strategy: interleaved
+    seed: southern-rock-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Guitar Heroes
+  type: theme
+  match_any_tags:
+  - guitar-heroes
+  ordering:
+    strategy: interleaved
+    seed: guitar-heroes-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Singer-Songwriter Rock
+  type: genre
+  match_any_tags:
+  - singer-songwriter-rock
+  ordering:
+    strategy: interleaved
+    seed: singer-songwriter-rock-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Folk Rock
+  type: genre
+  match_any_tags:
+  - folk-rock
+  ordering:
+    strategy: interleaved
+    seed: folk-rock-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Americana
+  type: genre
+  match_any_tags:
+  - americana
+  ordering:
+    strategy: interleaved
+    seed: americana-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Blues
+  type: genre
+  match_any_tags:
+  - blues
+  - blues-rock
+  ordering:
+    strategy: interleaved
+    seed: blues-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Roots Rock
+  type: genre
+  match_any_tags:
+  - roots-rock
+  ordering:
+    strategy: interleaved
+    seed: roots-rock-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Outlaw Country
+  type: genre
+  match_any_tags:
+  - outlaw-country
+  ordering:
+    strategy: interleaved
+    seed: outlaw-country-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Folk
+  type: genre
+  match_any_tags:
+  - folk
+  ordering:
+    strategy: interleaved
+    seed: folk-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Singer-Songwriter
+  type: genre
+  match_any_tags:
+  - singer-songwriter
+  ordering:
+    strategy: interleaved
+    seed: singer-songwriter-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Organ Jazz
+  type: instrumentation
+  match_any_tags:
+  - organ-jazz
+  ordering:
+    strategy: interleaved
+    seed: organ-jazz-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Piano Trio
+  type: ensemble
+  match_any_tags:
+  - piano-trio
+  ordering:
+    strategy: interleaved
+    seed: piano-trio-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Vocal Jazz
+  type: instrumentation
+  match_any_tags:
+  - vocal-jazz
+  ordering:
+    strategy: interleaved
+    seed: vocal-jazz-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Big Band
+  type: ensemble
+  match_any_tags:
+  - big-band
+  ordering:
+    strategy: interleaved
+    seed: big-band-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Swing
+  type: genre
+  match_any_tags:
+  - swing
+  ordering:
+    strategy: interleaved
+    seed: swing-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: ECM
+  type: label
+  match_any_tags:
+  - ecm-label
+  ordering:
+    strategy: interleaved
+    seed: ecm-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Contemporary Jazz
+  type: genre
+  match_any_tags:
+  - contemporary-jazz
+  ordering:
+    strategy: interleaved
+    seed: contemporary-jazz-v1
+    max_consecutive_artist: 1
+    max_consecutive_album: 1
+- name: Bruce Springsteen Collection
+  type: collection
+  include_artists:
+  - Bruce Springsteen
+  ordering:
+    strategy: album_grouped
+- name: John Mellencamp Collection
+  type: collection
+  include_artists:
+  - John Mellencamp
+  ordering:
+    strategy: album_grouped
+- name: Miles Davis Collection
+  type: collection
+  include_artists:
+  - Miles Davis
+  ordering:
+    strategy: album_grouped
+- name: R.E.M. Collection
+  type: collection
+  include_artists:
+  - R.E.M.
+  ordering:
+    strategy: album_grouped
+- name: Pearl Jam Collection
+  type: collection
+  include_artists:
+  - Pearl Jam
+  ordering:
+    strategy: album_grouped
+- name: Wilco Collection
+  type: collection
+  include_artists:
+  - Wilco
+  ordering:
+    strategy: album_grouped
+- name: Neil Young Collection
+  type: collection
+  include_artists:
+  - Neil Young
+  ordering:
+    strategy: album_grouped
+- name: The Beatles Collection
+  type: collection
+  include_artists:
+  - The Beatles
+  ordering:
+    strategy: album_grouped
+- name: Pixies Collection
+  type: collection
+  include_artists:
+  - Pixies
+  ordering:
+    strategy: album_grouped
+- name: Uncle Tupelo Collection
+  type: collection
+  include_artists:
+  - Uncle Tupelo
+  ordering:
+    strategy: album_grouped
+- name: Son Volt Collection
+  type: collection
+  include_artists:
+  - Son Volt
+  ordering:
+    strategy: album_grouped

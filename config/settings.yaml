@@ -1,0 +1,124 @@
+# Every playlist is defined against the canonical source. Other targets are
+# intersections of the canonical playlist with their own library, so a portable
+# playlist can never contain a track the full playlist rejected.
+canonical_source: plex_full
+
+# The library export is the single source of truth for the catalog. To refresh
+# the catalog, replace this file with a newer export; there is no snapshot to
+# rebuild and nothing can drift out of date.
+catalog:
+  source: "Library Playlist.m3u8"
+  windows_root: "M:\\itunes_portable\\iTunes\\iTunes Media\\Music\\"
+
+sources:
+  plex_full:
+    scope: full_catalog
+
+  rockbox_ipod:
+    scope: playlist_intersection
+    playlist: "iPod Sync.m3u8"
+    windows_root: "M:\\itunes_portable\\iTunes\\iTunes Media\\Music\\"
+
+outputs:
+  plex:
+    source: plex_full
+    root: "/music_portable/"
+    directory: "output/plex"
+
+  rockbox:
+    source: rockbox_ipod
+    root: "../Music/"
+    directory: "output/rockbox"
+    # Rockbox refuses playlists longer than its configured maximum and reports
+    # "playlist buffer full". Keep this at or below the device's
+    # Settings > General > Playlist > Max entries in playlist value,
+    # currently 32000.
+    #
+    # Nothing is trimmed at this size: the largest playlist is Rock Library at
+    # about 24,900 tracks. The cap stays declared so that if the library grows
+    # past the device limit the playlist is trimmed to a representative
+    # artist-rotated slice rather than silently becoming unplayable.
+    max_tracks: 32000
+
+# Candidate balancing runs between taxonomy matching and sequencing. It changes
+# WHICH tracks are in a playlist; sequencing only changes their order.
+balancing_defaults:
+  enabled: false
+  prefer_studio: true
+  dedupe_versions: true
+  max_versions_per_song: 1
+  max_live_versions_per_song: 1
+  min_tracks_per_artist: 1
+  cornerstone_multiplier: 1.5
+
+# Balancing policy by playlist type. Genre-like playlists are balanced so no
+# single artist's large live catalog dominates. Collections are never balanced:
+# a discography must stay complete (Musical Constitution #1).
+#
+# max_remix_share caps remixes in the finished playlist. Version collapsing
+# already prefers the original whenever the catalog holds one, so this quota
+# only governs songs that exist as a remix and nothing else. Set it to 0.0 to
+# drop those too, or add `exclude_flags: [remix]` to one playlist to keep every
+# remix out of it regardless of what else exists.
+balancing_by_type:
+  genre:
+    enabled: true
+    max_share_per_artist: 0.25
+    max_live_share: 0.25
+    max_remix_share: 0.05
+  scene:
+    enabled: true
+    max_share_per_artist: 0.3
+    max_live_share: 0.25
+    max_remix_share: 0.05
+  theme:
+    enabled: true
+    max_share_per_artist: 0.3
+    max_live_share: 0.25
+    max_remix_share: 0.05
+  instrumentation:
+    enabled: true
+    max_share_per_artist: 0.30
+    max_live_share: 0.25
+    max_remix_share: 0.05
+  ensemble:
+    enabled: true
+    max_share_per_artist: 0.35
+    max_live_share: 0.25
+    max_remix_share: 0.05
+  label:
+    enabled: true
+    max_share_per_artist: 0.30
+    max_live_share: 0.20
+    max_remix_share: 0.05
+  mood:
+    enabled: true
+    max_share_per_artist: 0.25
+    max_live_share: 0.0
+    max_remix_share: 0.0
+  curated:
+    enabled: true
+    max_share_per_artist: 0.25
+    max_live_share: 0.20
+    max_remix_share: 0.0
+  collection:
+    enabled: false
+
+reporting:
+  # Playlist pairs audited for effective duplication.
+  overlap_pairs:
+    - [Grunge, Seattle Sound]
+    - [Grunge, 90s Rock]
+    - [Grunge, 90s Alternative]
+    - [Seattle Sound, 90s Rock]
+    - [Seattle Sound, 90s Alternative]
+    - [90s Rock, 90s Alternative]
+    - [College Rock, 80s Alternative]
+    - [Americana, Roots Rock]
+    - [Americana, Heartland Rock]
+    - [Americana, Alt Country]
+    - [Roots Rock, Heartland Rock]
+    - [Roots Rock, Alt Country]
+    - [Heartland Rock, Alt Country]
+    - [Singer-Songwriter, Singer-Songwriter Rock]
+    - [Big Band, Swing]

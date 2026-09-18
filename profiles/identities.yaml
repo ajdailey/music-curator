@@ -1,0 +1,96 @@
+# Artist identity, alias, and related-identity declarations.
+#
+# `aliases` are alternate spellings of the SAME artist. Punctuation variants are
+# matched automatically (R.E.M. == R.E.M_ == REM), so aliases are only needed for
+# spellings that differ by more than punctuation.
+#
+# `related` declares a DIFFERENT artist whose catalog is eligible for inclusion
+# when a playlist opts in with `include_related: true`. Side projects are never
+# merged automatically - every relationship here is deliberate.
+
+# Folders that are not artists. They stay in the catalog but never enter a
+# genre playlist. A collection may still name one explicitly if you ever want
+# a playlist built from one.
+excluded_artists:
+  # 9,418 tracks across 320 various-artists albums: Stax singles boxes,
+  # soundtracks, "90s Rock (Playlist)". The real per-track artist is lost to
+  # the folder name, so these can never be classified honestly.
+  - Compilations
+  # 1,803 tracks of bluegrass tribute covers ("Pickin' On Tom Petty"). The
+  # billed artist is a session group, not the artist being covered, so these
+  # would otherwise pollute the covered artists' genres.
+  - Pickin' On Series
+
+identities:
+  R.E.M.:
+    aliases:
+      # The catalog stores the filesystem-sanitized directory name: Windows
+      # forbids a trailing dot, so the export wrote `R.E.M_`.
+      - R.E.M_
+      - REM
+    note: Catalog spelling is filesystem-sanitized.
+
+  Neil Young:
+    related:
+      - Crazy Horse
+    note: >-
+      Crazy Horse is billed as its own artist in the catalog but is Neil Young's
+      long-running backing band. Buffalo Springfield and CSNY are deliberately
+      NOT related identities - they are separate bands, not Neil Young records.
+
+  Tom Petty:
+    related:
+      - Heartbreakers
+    note: >-
+      The catalog splits `Tom Petty` and `Heartbreakers`. Mudcrutch is not
+      declared; it is a distinct band.
+
+  Miles Davis:
+    aliases:
+      - Miles Davis Quintet
+      - The Miles Davis Quintet
+      - Miles Davis Sextet
+      - Miles Davis Nonet
+    note: Ensemble billings of the same leader.
+
+  The Beatles:
+    aliases:
+      - Beatles
+    note: >-
+      Solo Beatles catalogs are intentionally excluded. They are separate
+      artists, not Beatles records.
+
+  # Found by the report's "profiled artists absent from catalog" check: the
+  # profile spelling and the catalog billing differed, so the artist silently
+  # contributed nothing to any playlist.
+  Art Blakey & The Jazz Messengers:
+    aliases:
+      - Art Blakey
+    note: Catalog bills the leader alone.
+
+  Carlos Santana:
+    aliases:
+      - Santana
+    note: Catalog bills the band name.
+
+  Dr. Lonnie Smith:
+    aliases:
+      - Lonnie Smith
+    note: >-
+      Organist. Distinct from the vocalist Lonnie Liston Smith, who is not in
+      the catalog; revisit if that changes.
+
+  Stevie Ray Vaughan:
+    aliases:
+      - Stevie Ray Vaughan & Double Trouble
+    note: >-
+      Catalog bills the band. Jimmie Vaughan and The Vaughan Brothers are
+      deliberately NOT aliases; they are different artists.
+
+  Bill Evans:
+    note: >-
+      Distinct from `Bill Evans (sax)`, a different musician who also appears in
+      the catalog. Do not add an alias linking them.
+
+  Bill Evans (sax):
+    note: Saxophonist; not the pianist Bill Evans.

@@ -1,0 +1,53 @@
+# Normalize text to LF in the repository and check it out per platform.
+* text=auto
+
+# Windows shells mis-parse LF in labels and multi-line blocks, so batch and
+# PowerShell files are pinned to CRLF on every host, including WSL checkouts.
+# scripts/container.bat and scripts/setup.bat are run from cmd, PowerShell and
+# by double-click, where a LF checkout breaks the goto labels outright.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Everything the engine or a POSIX shell reads stays LF, including on Windows.
+*.sh text eol=lf
+*.py text eol=lf
+*.pyi text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.cfg text eol=lf
+*.ini text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+.env.example text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# The container files are read by a Linux image and by the build daemon, which
+# both require LF, whatever the host checks out.
+Dockerfile text eol=lf
+*.dockerfile text eol=lf
+.dockerignore text eol=lf
+compose.yaml text eol=lf
+
+# Playlists are produced by external software or by the generator and are never
+# hand-edited. Leave their bytes alone; the parser tolerates LF and CRLF alike.
+*.m3u -text
+*.m3u8 -text
+
+# Better hunk headers when a diff does land in one of these.
+*.py diff=python
+*.md diff=markdown
+
+# Generated playlists and reports are output, not authored source. Collapse
+# them in review so a regeneration diff does not bury a knowledge change.
+output/** linguist-generated=true
+reports/** linguist-generated=true
+knowledge/song-popularity.json linguist-generated=true
+
+# The knowledge base is the substance of the repository. Keep the language
+# statistics from reporting it as a Python project with some YAML.
+taxonomy/** linguist-detectable=true
+profiles/** linguist-detectable=true

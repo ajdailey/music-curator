@@ -1,0 +1,17 @@
+# Portable (Rockbox) selection rules.
+#
+# NOTE: this file is descriptive. No code reads it. The behavior it documents
+# is implemented by config/settings.yaml:
+#
+#   sources.rockbox_ipod   - the intersection with iPod Sync.m3u8
+#   outputs.rockbox        - output root, directory, and max_tracks capacity
+#
+# It is kept as the place to record portable-specific intent that has no home
+# in the taxonomy. Do not add settings here expecting them to take effect.
+
+mode: source_playlist_intersection
+source: rockbox_ipod
+
+# Capacity is enforced by outputs.rockbox.max_tracks in config/settings.yaml,
+# set to the device's Settings > General > Playlist > Max entries in playlist.
+capacity: see config/settings.yaml

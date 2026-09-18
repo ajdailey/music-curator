@@ -1,0 +1,198 @@
+tags:
+  music: {}
+  rock:
+    parents:
+    - music
+  classic-rock:
+    parents:
+    - rock
+  progressive-rock:
+    parents:
+    - rock
+  alternative-rock:
+    parents:
+    - rock
+  college-rock:
+    parents:
+    - alternative-rock
+  jangle-pop:
+    parents:
+    - alternative-rock
+  new-wave:
+    parents:
+    - alternative-rock
+  grunge:
+    parents:
+    - alternative-rock
+  britpop:
+    parents:
+    - alternative-rock
+  indie-rock:
+    parents:
+    - alternative-rock
+  hard-rock:
+    parents:
+    - rock
+  blues-rock:
+    parents:
+    - rock
+  folk-rock:
+    parents:
+    - rock
+  heartland-rock:
+    parents:
+    - rock
+  power-pop:
+    parents:
+    - rock
+  americana:
+    parents:
+    - music
+  alt-country:
+    parents:
+    - americana
+    - rock
+  singer-songwriter:
+    parents:
+    - americana
+  bluegrass:
+    parents:
+    - americana
+  jazz:
+    parents:
+    - music
+  traditional-jazz:
+    parents:
+    - jazz
+  swing:
+    parents:
+    - jazz
+  bebop:
+    parents:
+    - jazz
+  hard-bop:
+    parents:
+    - jazz
+  soul-jazz:
+    parents:
+    - hard-bop
+  cool-jazz:
+    parents:
+    - jazz
+  west-coast-jazz:
+    parents:
+    - cool-jazz
+  modal-jazz:
+    parents:
+    - jazz
+  post-bop:
+    parents:
+    - jazz
+  avant-garde-jazz:
+    parents:
+    - jazz
+  free-jazz:
+    parents:
+    - avant-garde-jazz
+  jazz-fusion:
+    parents:
+    - jazz
+  jazz-rock:
+    parents:
+    - jazz-fusion
+    - rock
+  contemporary-jazz:
+    parents:
+    - jazz
+  latin-jazz:
+    parents:
+    - jazz
+  vocal-jazz:
+    parents:
+    - jazz
+  # Big band is an ENSEMBLE FORMAT, not a style or era. Swing-era big bands are
+  # one part of the format, which also covers progressive (Kenton), bop, and
+  # post-swing orchestras. Do not make big-band a child of swing: that forces
+  # every big-band artist into the Swing playlist and makes the two playlists
+  # identical.
+  big-band:
+    parents:
+    - jazz
+  piano-jazz:
+    parents:
+    - jazz
+  guitar-jazz:
+    parents:
+    - jazz
+  organ-jazz:
+    parents:
+    - jazz
+  blue-note-label:
+    parents:
+    - jazz
+  prestige-label:
+    parents:
+    - jazz
+  riverside-label:
+    parents:
+    - jazz
+  ecm-label:
+    parents:
+    - jazz
+  mood-late-night:
+    parents:
+    - music
+  mood-sunday-morning:
+    parents:
+    - music
+  activity-driving:
+    parents:
+    - music
+  southern-rock:
+    parents:
+    - rock
+  roots-rock:
+    parents:
+    - rock
+    - americana
+  singer-songwriter-rock:
+    parents:
+    - rock
+    - singer-songwriter
+  country:
+    parents:
+    - music
+  outlaw-country:
+    parents:
+    - country
+    - americana
+  folk:
+    parents:
+    - music
+  piano-trio:
+    parents:
+    - jazz
+  seattle-scene:
+    parents:
+    - grunge
+  90s-rock:
+    parents:
+    - rock
+  guitar-heroes:
+    parents:
+    - rock
+  # Blues sits directly under music: it has its own playlist and does not feed
+  # Americana. blues-rock stays a rock child.
+  blues:
+    parents:
+    - music
+  rock-and-roll:
+    parents:
+    - rock
+  metal:
+    parents:
+    - rock
+aliases:
+  alternative: alternative-rock
+  blue-note: blue-note-label
+  fusion: jazz-fusion

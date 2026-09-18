@@ -1,0 +1,92 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.python-version
+
+# Test, lint and type-check caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.hypothesis/
+*.cover
+
+# Editors and OS
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Credentials. Only .env.example is committed.
+.env
+.env.*
+!.env.example
+
+# Machine-specific source exports. Both live in the project root, are the
+# inputs rather than outputs, and are never modified by the tools.
+/Library Playlist.m3u8
+/iPod Sync.m3u8
+
+# Generated knowledge. Derived data whose size scales with the catalog.
+# Rebuild with: plex index, then plex popularity.
+knowledge/song-popularity.json
+
+# Generated outputs, manifests and reports
+output/**/*.m3u8
+output/manifests/
+reports/*.json
+reports/*.csv
+.cache/
+
+# The publish directory scripts/publish.sh and the container write to.
+dist/
+
+# Keep the output directories themselves
+!output/.gitkeep
+!output/plex/.gitkeep
+!output/rockbox/.gitkeep
+
+# Root-level Markdown is tracked only through the allow list below, which is
+# the complete set of root documents in the repository. Anything else at the
+# root stays a local working note; a document that does not need to be at the
+# root goes in docs/, which this rule does not cover.
+/*.md
+!README.md
+!MUSICAL_CONSTITUTION.md
+!ROADMAP.md
+!WSL_SETUP.md

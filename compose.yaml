@@ -1,0 +1,66 @@
+# The one place the containerized run is configured: mounts, caches, and
+# environment. Linux and Windows run this same file, so there is no
+# per-platform path to keep in step - only a launcher on each side.
+#
+#   docker compose build                    # the image
+#   docker compose run --rm curator         # validate, ruff, test, generate, report
+#   docker compose run --rm curator scripts/report.sh
+#
+# On Linux with rootful Docker, export MUSIC_CURATOR_UID=$(id -u) and
+# MUSIC_CURATOR_GID=$(id -g) before running compose directly; unset, the
+# container runs as root and the files it writes to the tree belong to root.
+# Docker Desktop and rootless engines need neither.
+#
+# scripts/container.sh and scripts/container.bat wrap these and add only
+# ergonomics.
+#
+# A host run with a local Python 3.11 or newer stays the primary path. This is
+# an interpreter substitute, not a network one: the first run downloads the
+# dependencies into the venv volume.
+
+name: music-curator
+
+services:
+  curator:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: ${MUSIC_CURATOR_IMAGE:-music-curator:local}
+    working_dir: /work
+    # Set by scripts/container.sh so files written to a Linux bind mount belong
+    # to the caller. Root is the default because Docker Desktop maps ownership
+    # itself and a rootless engine maps root to the caller; no fixed uid is
+    # right for rootful Docker on Linux.
+    user: "${MUSIC_CURATOR_UID:-0}:${MUSIC_CURATOR_GID:-0}"
+    volumes:
+      # The whole tree: the knowledge files, the two source exports in the
+      # project root, and the gitignored .env the Plex commands read.
+      - .:/work
+      # Generated playlists and reports land in output/ and reports/ inside
+      # that mount, so they are already on the host. This second mount is the
+      # publish target for scripts/publish.sh, which copies them somewhere
+      # else - an SD card, a share - without a second generation run.
+      - ${MUSIC_CURATOR_OUT:-./dist}:/out
+      # The expensive part of a first run. Named rather than left to the
+      # project prefix, so they survive "compose down" and are shared across
+      # branches.
+      - venv:/opt/music-curator/venv
+      - pip-cache:/opt/music-curator/.cache/pip
+    environment:
+      # Kept apart from the host's .venv in the same tree. That directory holds
+      # the host interpreter's absolute paths and binaries, and a container run
+      # writing to it would leave the host scripts running a Python that is not
+      # there. scripts/lib.sh reads this variable.
+      MUSIC_CURATOR_VENV: /opt/music-curator/venv
+      MUSIC_CURATOR_OUT_DIR: /out
+    command: scripts/check.sh
+
+# No Plex credentials appear above. The CLI reads the gitignored .env in the
+# project root, which arrives on the bind mount, so no secret passes through
+# this file, the image, or the shell environment.
+
+volumes:
+  venv:
+    name: music-curator-venv
+  pip-cache:
+    name: music-curator-pip-cache

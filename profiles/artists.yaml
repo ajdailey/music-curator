@@ -1,0 +1,1059 @@
+# Song prominence is inferred from how often the collection re-releases a song
+# (see src/music_engine/scoring.py). Where that heuristic is wrong, state it:
+#
+#   Stone Temple Pilots:
+#     tags: [...]
+#     essential:            # always treated as a signature song
+#       - Interstate Love Song
+#     demote:               # never treated as a signature song
+#       - Some Overplayed Filler
+#
+# Essential songs are kept first when a playlist is trimmed to fit a device.
+
+artists:
+  R.E.M.:
+    tags:
+    - college-rock
+    - jangle-pop
+    - activity-driving
+    - 90s-rock
+    importance: cornerstone
+  Pixies:
+    tags:
+    - college-rock
+    - alternative-rock
+    - indie-rock
+  The Smiths:
+    tags:
+    - alternative-rock
+    - jangle-pop
+  The Cure:
+    tags:
+    - alternative-rock
+    - new-wave
+  New Order:
+    tags:
+    - alternative-rock
+    - new-wave
+  XTC:
+    tags:
+    - alternative-rock
+    - new-wave
+    - power-pop
+  The Church:
+    tags:
+    - alternative-rock
+    - jangle-pop
+    - college-rock
+  The Replacements:
+    tags:
+    - college-rock
+    - alternative-rock
+    - indie-rock
+  Pearl Jam:
+    tags:
+    - alternative-rock
+    - grunge
+    - seattle-scene
+    - 90s-rock
+  Stone Temple Pilots:
+    tags:
+    - alternative-rock
+    - grunge
+    - hard-rock
+    - 90s-rock
+  Soundgarden:
+    tags:
+    - alternative-rock
+    - grunge
+    - hard-rock
+    - seattle-scene
+    - 90s-rock
+  Alice in Chains:
+    tags:
+    - alternative-rock
+    - grunge
+    - hard-rock
+    - seattle-scene
+    - 90s-rock
+  Candlebox:
+    tags:
+    - alternative-rock
+    - grunge
+    - 90s-rock
+  Oasis:
+    tags:
+    - alternative-rock
+    - britpop
+    - 90s-rock
+  Blur:
+    tags:
+    - alternative-rock
+    - britpop
+  Radiohead:
+    tags:
+    - alternative-rock
+  Live:
+    tags:
+    - alternative-rock
+    - 90s-rock
+  Matthew Sweet:
+    tags:
+    - alternative-rock
+    - power-pop
+    - 90s-rock
+  The Lemonheads:
+    tags:
+    - alternative-rock
+    - power-pop
+  Gin Blossoms:
+    tags:
+    - alternative-rock
+    - jangle-pop
+    - 90s-rock
+  Uncle Tupelo:
+    tags:
+    - alt-country
+  Son Volt:
+    tags:
+    - alt-country
+  Wilco:
+    tags:
+    - alt-country
+    - americana
+    - roots-rock
+  Whiskeytown:
+    tags:
+    - alt-country
+  Old 97's:
+    tags:
+    - alt-country
+  The Jayhawks:
+    tags:
+    - alt-country
+    - americana
+    - roots-rock
+  The Bottle Rockets:
+    tags:
+    - alt-country
+  Drive-By Truckers:
+    tags:
+    - alt-country
+    - southern-rock
+    - americana
+    - roots-rock
+  Cracker:
+    tags:
+    - alt-country
+    - alternative-rock
+    - 90s-rock
+  Bruce Springsteen:
+    tags:
+    - heartland-rock
+    - singer-songwriter
+    - activity-driving
+    - americana
+    - singer-songwriter-rock
+    importance: cornerstone
+  John Mellencamp:
+    tags:
+    - heartland-rock
+    - singer-songwriter
+    - activity-driving
+    - singer-songwriter-rock
+    importance: cornerstone
+  Tom Petty:
+    tags:
+    - heartland-rock
+    - folk-rock
+    - activity-driving
+    - classic-rock
+    - americana
+    - roots-rock
+    importance: cornerstone
+  Bob Seger:
+    tags:
+    - heartland-rock
+    - classic-rock
+    - activity-driving
+  Southside Johnny & the Asbury Jukes:
+    tags:
+    - heartland-rock
+    - classic-rock
+  The Gaslight Anthem:
+    tags:
+    - heartland-rock
+    - alternative-rock
+  Brian Fallon:
+    tags:
+    - heartland-rock
+  John Cafferty & The Beaver Brown Band:
+    tags:
+    - heartland-rock
+  Little Steven:
+    tags:
+    - heartland-rock
+  'Yes':
+    tags:
+    - progressive-rock
+    importance: cornerstone
+  Genesis:
+    tags:
+    - progressive-rock
+  King Crimson:
+    tags:
+    - progressive-rock
+  Camel:
+    tags:
+    - progressive-rock
+  Gentle Giant:
+    tags:
+    - progressive-rock
+  Marillion:
+    tags:
+    - progressive-rock
+  Rush:
+    tags:
+    - progressive-rock
+    - hard-rock
+  Jethro Tull:
+    tags:
+    - progressive-rock
+  Kansas:
+    tags:
+    - progressive-rock
+  Porcupine Tree:
+    tags:
+    - progressive-rock
+  Steven Wilson:
+    tags:
+    - progressive-rock
+  Miles Davis:
+    tags:
+    - cool-jazz
+    - hard-bop
+    - modal-jazz
+    - jazz-fusion
+    importance: cornerstone
+  John Coltrane:
+    tags:
+    - hard-bop
+    - modal-jazz
+    - post-bop
+    - avant-garde-jazz
+    importance: cornerstone
+  Duke Ellington:
+    tags:
+    - swing
+    - big-band
+  Charlie Parker:
+    tags:
+    - bebop
+  Thelonious Monk:
+    tags:
+    - bebop
+    - hard-bop
+    - piano-jazz
+  Bill Evans:
+    tags:
+    - cool-jazz
+    - modal-jazz
+    - piano-jazz
+    - mood-late-night
+    - piano-trio
+  Art Blakey & The Jazz Messengers:
+    tags:
+    - hard-bop
+    - blue-note-label
+  Herbie Hancock:
+    tags:
+    - hard-bop
+    - modal-jazz
+    - post-bop
+    - jazz-fusion
+    - piano-jazz
+    - blue-note-label
+  Wayne Shorter:
+    tags:
+    - hard-bop
+    - modal-jazz
+    - post-bop
+    - blue-note-label
+  Charles Mingus:
+    tags:
+    - hard-bop
+    - post-bop
+    - avant-garde-jazz
+  Horace Silver:
+    tags:
+    - hard-bop
+    - soul-jazz
+    - piano-jazz
+    - blue-note-label
+  Lee Morgan:
+    tags:
+    - hard-bop
+    - blue-note-label
+  Hank Mobley:
+    tags:
+    - hard-bop
+    - blue-note-label
+  Grant Green:
+    tags:
+    - hard-bop
+    - soul-jazz
+    - guitar-jazz
+    - blue-note-label
+    - mood-late-night
+  Freddie Hubbard:
+    tags:
+    - hard-bop
+    - post-bop
+    - blue-note-label
+  Joe Henderson:
+    tags:
+    - hard-bop
+    - post-bop
+    - blue-note-label
+  Jackie McLean:
+    tags:
+    - hard-bop
+    - post-bop
+    - blue-note-label
+  Donald Byrd:
+    tags:
+    - hard-bop
+    - jazz-fusion
+    - blue-note-label
+  Dexter Gordon:
+    tags:
+    - bebop
+    - hard-bop
+    - blue-note-label
+  Kenny Burrell:
+    tags:
+    - hard-bop
+    - guitar-jazz
+    - blue-note-label
+    - mood-late-night
+  Stanley Turrentine:
+    tags:
+    - hard-bop
+    - soul-jazz
+    - blue-note-label
+  Sonny Rollins:
+    tags:
+    - bebop
+    - hard-bop
+  Clifford Brown:
+    tags:
+    - bebop
+    - hard-bop
+  Cannonball Adderley:
+    tags:
+    - hard-bop
+    - soul-jazz
+  Weather Report:
+    tags:
+    - jazz-fusion
+  Return to Forever:
+    tags:
+    - jazz-fusion
+  Dave Weckl Band:
+    tags:
+    - jazz-fusion
+  Larry Coryell:
+    tags:
+    - jazz-fusion
+    - guitar-jazz
+  Mahavishnu Orchestra:
+    tags:
+    - jazz-rock
+  Pat Metheny Group:
+    tags:
+    - jazz-fusion
+    - contemporary-jazz
+    - guitar-jazz
+  Jean-Luc Ponty:
+    tags:
+    - jazz-fusion
+  Yellowjackets:
+    tags:
+    - jazz-fusion
+    - contemporary-jazz
+  Allan Holdsworth:
+    tags:
+    - jazz-rock
+    - guitar-jazz
+  Wes Montgomery:
+    tags:
+    - hard-bop
+    - soul-jazz
+    - guitar-jazz
+  Jim Hall:
+    tags:
+    - cool-jazz
+    - guitar-jazz
+    - mood-late-night
+  Pat Martino:
+    tags:
+    - hard-bop
+    - soul-jazz
+    - guitar-jazz
+  John Scofield:
+    tags:
+    - post-bop
+    - jazz-fusion
+    - guitar-jazz
+  Pat Metheny:
+    tags:
+    - contemporary-jazz
+    - guitar-jazz
+    - ecm-label
+  Julian Lage:
+    tags:
+    - contemporary-jazz
+    - guitar-jazz
+  Larry Carlton:
+    tags:
+    - contemporary-jazz
+    - guitar-jazz
+  John Abercrombie:
+    tags:
+    - guitar-jazz
+    - ecm-label
+  Gateway:
+    tags:
+    - ecm-label
+  Paul Desmond:
+    tags:
+    - cool-jazz
+    - west-coast-jazz
+    - mood-late-night
+  Chet Baker:
+    tags:
+    - cool-jazz
+    - west-coast-jazz
+    - vocal-jazz
+    - mood-late-night
+  Stan Getz:
+    tags:
+    - cool-jazz
+    - mood-late-night
+  Gerry Mulligan:
+    tags:
+    - cool-jazz
+    - west-coast-jazz
+  Dave Brubeck:
+    tags:
+    - cool-jazz
+    - west-coast-jazz
+  Lee Konitz:
+    tags:
+    - cool-jazz
+  Lennie Tristano:
+    tags:
+    - cool-jazz
+  The Modern Jazz Quartet:
+    tags:
+    - cool-jazz
+  Art Pepper:
+    tags:
+    - west-coast-jazz
+  Bud Powell:
+    tags:
+    - bebop
+    - piano-jazz
+  McCoy Tyner:
+    tags:
+    - modal-jazz
+    - piano-jazz
+  Chick Corea:
+    tags:
+    - piano-jazz
+  Hank Jones:
+    tags:
+    - piano-jazz
+  Wynton Kelly:
+    tags:
+    - piano-jazz
+  Erroll Garner:
+    tags:
+    - piano-jazz
+  Michel Petrucciani:
+    tags:
+    - piano-jazz
+  Ahmad Jamal:
+    tags:
+    - cool-jazz
+    - piano-jazz
+    - mood-late-night
+    - piano-trio
+  Nirvana:
+    tags:
+    - grunge
+    - seattle-scene
+    - 90s-rock
+  Mother Love Bone:
+    tags:
+    - grunge
+    - seattle-scene
+  Mad Season:
+    tags:
+    - grunge
+    - seattle-scene
+    - 90s-rock
+  Mudhoney:
+    tags:
+    - grunge
+    - seattle-scene
+  Screaming Trees:
+    tags:
+    - grunge
+    - seattle-scene
+    - 90s-rock
+  Green River:
+    tags:
+    - grunge
+    - seattle-scene
+  Tad:
+    tags:
+    - grunge
+    - seattle-scene
+  Bush:
+    tags:
+    - grunge
+    - 90s-rock
+  Silverchair:
+    tags:
+    - grunge
+    - 90s-rock
+  Collective Soul:
+    tags:
+    - 90s-rock
+  Better Than Ezra:
+    tags:
+    - 90s-rock
+  Toad the Wet Sprocket:
+    tags:
+    - 90s-rock
+  Counting Crows:
+    tags:
+    - 90s-rock
+  The Wallflowers:
+    tags:
+    - 90s-rock
+    - americana
+    - roots-rock
+  Blind Melon:
+    tags:
+    - 90s-rock
+  Soul Asylum:
+    tags:
+    - 90s-rock
+  The Black Crowes:
+    tags:
+    - 90s-rock
+    - blues-rock
+    - southern-rock
+    - roots-rock
+  Foo Fighters:
+    tags:
+    - 90s-rock
+  The Smashing Pumpkins:
+    tags:
+    - 90s-rock
+  The Afghan Whigs:
+    tags:
+    - 90s-rock
+    - indie-rock
+  Local H:
+    tags:
+    - 90s-rock
+    - indie-rock
+  Sponge:
+    tags:
+    - 90s-rock
+  Hüsker Dü:
+    tags:
+    - college-rock
+  The Feelies:
+    tags:
+    - college-rock
+    - indie-rock
+  Camper Van Beethoven:
+    tags:
+    - college-rock
+    - indie-rock
+  The dB's:
+    tags:
+    - college-rock
+  The Smithereens:
+    tags:
+    - college-rock
+  Violent Femmes:
+    tags:
+    - college-rock
+  Throwing Muses:
+    tags:
+    - college-rock
+    - indie-rock
+  Sonic Youth:
+    tags:
+    - college-rock
+    - indie-rock
+  Meat Puppets:
+    tags:
+    - college-rock
+  Minutemen:
+    tags:
+    - college-rock
+  They Might Be Giants:
+    tags:
+    - college-rock
+  10,000 Maniacs:
+    tags:
+    - college-rock
+  The B-52's:
+    tags:
+    - college-rock
+  The Psychedelic Furs:
+    tags:
+    - college-rock
+  Pulp:
+    tags:
+    - britpop
+  The Verve:
+    tags:
+    - britpop
+  Supergrass:
+    tags:
+    - britpop
+  Elastica:
+    tags:
+    - britpop
+  Ocean Colour Scene:
+    tags:
+    - britpop
+  The Charlatans:
+    tags:
+    - britpop
+  Ash:
+    tags:
+    - britpop
+  Manic Street Preachers:
+    tags:
+    - britpop
+  Dinosaur Jr.:
+    tags:
+    - indie-rock
+  The Allman Brothers Band:
+    tags:
+    - blues-rock
+    - southern-rock
+    - classic-rock
+  Cream:
+    tags:
+    - blues-rock
+    - classic-rock
+  Bad Company:
+    tags:
+    - blues-rock
+    - classic-rock
+  Rory Gallagher:
+    tags:
+    - blues-rock
+    - guitar-heroes
+  Johnny Winter:
+    tags:
+    - blues-rock
+    - guitar-heroes
+  ZZ Top:
+    tags:
+    - blues-rock
+    - classic-rock
+  Gary Moore:
+    tags:
+    - blues-rock
+    - guitar-heroes
+  Joe Bonamassa:
+    tags:
+    - blues-rock
+    - guitar-heroes
+  Gov't Mule:
+    tags:
+    - blues-rock
+    - southern-rock
+  Ten Years After:
+    tags:
+    - blues-rock
+  Lynyrd Skynyrd:
+    tags:
+    - southern-rock
+    - classic-rock
+  The Marshall Tucker Band:
+    tags:
+    - southern-rock
+  Molly Hatchet:
+    tags:
+    - southern-rock
+  38 Special:
+    tags:
+    - southern-rock
+  The Beatles:
+    tags:
+    - classic-rock
+  The Rolling Stones:
+    tags:
+    - classic-rock
+  Led Zeppelin:
+    tags:
+    - classic-rock
+  The Who:
+    tags:
+    - classic-rock
+  Pink Floyd:
+    tags:
+    - classic-rock
+    - progressive-rock
+  The Kinks:
+    tags:
+    - classic-rock
+  The Byrds:
+    tags:
+    - folk-rock
+  Buffalo Springfield:
+    tags:
+    - folk-rock
+  Crosby, Stills & Nash:
+    tags:
+    - folk-rock
+  Simon & Garfunkel:
+    tags:
+    - folk-rock
+    - folk
+  Donovan:
+    tags:
+    - folk-rock
+    - folk
+  Mumford & Sons:
+    tags:
+    - folk-rock
+  The Lumineers:
+    tags:
+    - folk-rock
+  Neil Young:
+    tags:
+    - classic-rock
+    - americana
+    - singer-songwriter
+    - singer-songwriter-rock
+  Jimi Hendrix:
+    tags:
+    - guitar-heroes
+  Eric Clapton:
+    tags:
+    - guitar-heroes
+  Jeff Beck:
+    tags:
+    - guitar-heroes
+  Stevie Ray Vaughan:
+    tags:
+    - guitar-heroes
+  Robin Trower:
+    tags:
+    - guitar-heroes
+  Carlos Santana:
+    tags:
+    - guitar-heroes
+  Mark Knopfler:
+    tags:
+    - guitar-heroes
+  David Gilmour:
+    tags:
+    - guitar-heroes
+  Ryan Adams:
+    tags:
+    - alt-country
+  Lucinda Williams:
+    tags:
+    - alt-country
+    - americana
+    - singer-songwriter
+    - singer-songwriter-rock
+  Steve Earle:
+    tags:
+    - alt-country
+    - americana
+    - singer-songwriter
+    - singer-songwriter-rock
+  Jason Isbell:
+    tags:
+    - alt-country
+    - americana
+  Slobberbone:
+    tags:
+    - alt-country
+  John Hiatt:
+    tags:
+    - americana
+    - roots-rock
+    - singer-songwriter
+    - singer-songwriter-rock
+  Jackson Browne:
+    tags:
+    - singer-songwriter
+    - singer-songwriter-rock
+  The Band:
+    tags:
+    - americana
+    - roots-rock
+  Los Lobos:
+    tags:
+    - americana
+    - roots-rock
+  Willie Nelson:
+    tags:
+    - outlaw-country
+  Waylon Jennings:
+    tags:
+    - outlaw-country
+  Johnny Cash:
+    tags:
+    - outlaw-country
+  Kris Kristofferson:
+    tags:
+    - outlaw-country
+  Merle Haggard:
+    tags:
+    - outlaw-country
+  Hank Williams, Jr.:
+    tags:
+    - outlaw-country
+  The Highwaymen:
+    tags:
+    - outlaw-country
+  Sturgill Simpson:
+    tags:
+    - outlaw-country
+  Bob Dylan:
+    tags:
+    - folk
+    - folk-rock
+    - singer-songwriter
+    - singer-songwriter-rock
+  Joan Baez:
+    tags:
+    - folk
+  Joni Mitchell:
+    tags:
+    - folk
+    - singer-songwriter
+  Gordon Lightfoot:
+    tags:
+    - folk
+  Nick Drake:
+    tags:
+    - folk
+  Gillian Welch:
+    tags:
+    - folk
+  Woody Guthrie:
+    tags:
+    - folk
+  Pete Seeger:
+    tags:
+    - folk
+  Cat Stevens:
+    tags:
+    - folk
+    - singer-songwriter
+  John Prine:
+    tags:
+    - folk
+    - singer-songwriter
+  Iron & Wine:
+    tags:
+    - folk
+  Fleet Foxes:
+    tags:
+    - folk
+  Jimmy Smith:
+    tags:
+    - organ-jazz
+  Larry Young:
+    tags:
+    - organ-jazz
+  Jack McDuff:
+    tags:
+    - organ-jazz
+  Richard Groove Holmes:
+    tags:
+    - organ-jazz
+  Dr. Lonnie Smith:
+    tags:
+    - organ-jazz
+  Joey DeFrancesco:
+    tags:
+    - organ-jazz
+  Jimmy McGriff:
+    tags:
+    - organ-jazz
+  Shirley Scott:
+    tags:
+    - organ-jazz
+  Charles Earland:
+    tags:
+    - organ-jazz
+  Big John Patton:
+    tags:
+    - organ-jazz
+  Reuben Wilson:
+    tags:
+    - organ-jazz
+  Oscar Peterson:
+    tags:
+    - piano-trio
+    - piano-jazz
+  Keith Jarrett:
+    tags:
+    - piano-trio
+    - piano-jazz
+    - ecm-label
+  Brad Mehldau:
+    tags:
+    - piano-trio
+    - piano-jazz
+    - contemporary-jazz
+  Bill Charlap Trio:
+    tags:
+    - piano-trio
+    - piano-jazz
+  Vince Guaraldi Trio:
+    tags:
+    - piano-trio
+    - piano-jazz
+  Ella Fitzgerald:
+    tags:
+    - vocal-jazz
+  Sarah Vaughan:
+    tags:
+    - vocal-jazz
+  Billie Holiday:
+    tags:
+    - vocal-jazz
+  Nina Simone:
+    tags:
+    - vocal-jazz
+  Diana Krall:
+    tags:
+    - vocal-jazz
+  Carmen McRae:
+    tags:
+    - vocal-jazz
+  Cassandra Wilson:
+    tags:
+    - vocal-jazz
+  Count Basie:
+    tags:
+    - big-band
+    - swing
+  Glenn Miller:
+    tags:
+    - big-band
+    - swing
+  Buddy Rich:
+    tags:
+    - big-band
+  Gordon Goodwin's Big Phat Band:
+    tags:
+    - big-band
+  # Progressive big band, post-swing era. Big-band format without swing-era
+  # style - the clearest case for keeping the two concepts separate.
+  Stan Kenton:
+    tags:
+    - big-band
+  Jan Garbarek:
+    tags:
+    - ecm-label
+  Eberhard Weber:
+    tags:
+    - ecm-label
+  Terje Rypdal:
+    tags:
+    - ecm-label
+  Grateful Dead:
+    tags:
+    - classic-rock
+    - roots-rock
+  The Fall:
+    tags:
+    - alternative-rock
+    - indie-rock
+  Phish:
+    tags:
+    - rock
+  David Bowie:
+    tags:
+    - classic-rock
+  Barenaked Ladies:
+    tags:
+    - alternative-rock
+    - 90s-rock
+  The Beach Boys:
+    tags:
+    - classic-rock
+  John Lee Hooker:
+    tags:
+    - blues
+  Kiss:
+    tags:
+    - hard-rock
+    - classic-rock
+  Elvis Presley:
+    tags:
+    - rock-and-roll
+  Metallica:
+    tags:
+    - metal
+  Guided by Voices:
+    tags:
+    - indie-rock
+  Dave Matthews Band:
+    tags:
+    - 90s-rock
+  Dave Liebman:
+    tags:
+    - post-bop
+  Wynton Marsalis:
+    tags:
+    - hard-bop
+    - post-bop
+  Motörhead:
+    tags:
+    - metal
+  Elton John:
+    tags:
+    - classic-rock
+    - singer-songwriter
+  Neil Diamond:
+    tags:
+    - singer-songwriter
+  Todd Rundgren:
+    tags:
+    - power-pop
+    - singer-songwriter-rock
+  Manfred Mann:
+    tags:
+    - classic-rock
+  Van Morrison:
+    tags:
+    - singer-songwriter
+    - folk-rock
+  Sonny Stitt:
+    tags:
+    - bebop
+    - hard-bop
+  Lester Young:
+    tags:
+    - swing

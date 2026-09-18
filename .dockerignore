@@ -1,0 +1,8 @@
+# Trims the build context to nothing. The image copies no source - the tree
+# arrives as a bind mount at run time - so sending the catalog export, the
+# virtualenv and the generated playlists would cost minutes for nothing.
+#
+# BuildKit reads docker/Dockerfile out of band, so excluding everything here
+# does not hide it. Adding a COPY to the Dockerfile means adding an allow line
+# for the file it copies.
+*

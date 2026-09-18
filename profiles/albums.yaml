@@ -1,0 +1,328 @@
+# Album-level knowledge.
+#
+# `patterns` match many albums by name at once. `albums` carry curated
+# per-album knowledge and win over patterns.
+#
+# Album `tags` are added to the artist's tags for membership purposes, so an
+# album can belong somewhere its artist does not. Album `flags` feed version
+# classification, so an album can be marked live without every title saying so.
+#
+# An explicit entry can also remove what it would otherwise inherit:
+#
+#   clear_tags:  [heartland-rock]  # dropped from the artist's tags for this album
+#   clear_flags: [live]            # never classified live, by flag or by text
+#
+# `clear_flags` is what keeps an album titled "Live Through This" a studio
+# record. `validate` rejects an undeclared tag or an unknown flag in either list.
+
+patterns:
+  # Official bootleg and archival concert series name their albums by date and
+  # venue: "1975_10_18 West Hollywood, CA". Nothing in the album or track title
+  # says "live". Without this rule the concert recordings are classified as
+  # studio takes and compete with real studio material in genre playlists.
+  - name: dated-concert-recording
+    album_matches: '^(19|20)\d{2}[-_./]\d{2}[-_./]\d{2}(\s|$)'
+    flags:
+      - live
+    note: >-
+      Matches the Pearl Jam and Bruce Springsteen archival series.
+
+  # "Live at the Fillmore 1971" style names where the year trails the venue,
+  # and concert albums whose titles never say "live" ("The Koln Concert").
+  # Every `concert` album in the export is a concert recording.
+  - name: live-venue-recording
+    album_matches: '(?i)\b(?:live\s+(?:at|in|from)|concerts?|unplugged)\b'
+    flags:
+      - live
+
+albums:
+  # Nebraska, The Ghost of Tom Joad and Devils & Dust are solo acoustic
+  # records, and the Seeger Sessions are folk standards. Their entries add
+  # `folk` and clear the rock tags the rest of the catalog carries, so they
+  # reach the folk playlists and leave Heartland Rock and Rock Library.
+  # `Nebraska '82_ Expanded Edition` is not covered: it adds the E Street Band
+  # "Electric Nebraska" sessions to the acoustic album.
+  Bruce Springsteen:
+    Nebraska:
+      tags: &springsteen-acoustic
+        - singer-songwriter
+        - folk
+      clear_tags: &springsteen-not-rock
+        - heartland-rock
+        - singer-songwriter-rock
+        - rock
+      masterpiece: true
+      complete_album: true
+      year: 1982
+      note: Solo acoustic demos issued as the finished album.
+    Album Collection Vol. 1 - Nebraska:
+      tags: *springsteen-acoustic
+      clear_tags: *springsteen-not-rock
+      note: Nebraska as issued in the Album Collection box.
+    Nebraska Outtakes:
+      tags: *springsteen-acoustic
+      clear_tags: *springsteen-not-rock
+      note: Solo acoustic outtakes from the Nebraska sessions.
+    Born in the U.S.A.:
+      masterpiece: true
+      complete_album: true
+      year: 1984
+    Born to Run:
+      masterpiece: true
+      complete_album: true
+      year: 1975
+    The Ghost of Tom Joad:
+      tags: *springsteen-acoustic
+      clear_tags: *springsteen-not-rock
+      year: 1995
+      note: Acoustic companion to Nebraska.
+    Album Collection Vol. 2 - The Ghost Of T:
+      tags: *springsteen-acoustic
+      clear_tags: *springsteen-not-rock
+      note: The Ghost of Tom Joad as issued in the Album Collection box.
+    Devils & Dust:
+      tags: *springsteen-acoustic
+      clear_tags: *springsteen-not-rock
+      year: 2005
+      note: Mostly solo acoustic; the third record of the acoustic trilogy.
+    We Shall Overcome_ The Seeger Sessions:
+      tags:
+        - folk
+      clear_tags: *springsteen-not-rock
+      year: 2006
+      note: Folk standards associated with Pete Seeger.
+
+  Neil Young:
+    Harvest:
+      tags:
+        - folk
+        - folk-rock
+        - singer-songwriter
+      masterpiece: true
+      complete_album: true
+      year: 1972
+    Rust Never Sleeps:
+      masterpiece: true
+      complete_album: true
+      year: 1979
+    Acoustic Electric:
+      flags:
+        - live
+      note: Concert recording; three of its titles carry no live marker.
+
+  R.E.M.:
+    Murmur:
+      masterpiece: true
+      complete_album: true
+      year: 1983
+    Automatic For The People:
+      masterpiece: true
+      complete_album: true
+      year: 1992
+
+  Wilco:
+    Yankee Hotel Foxtrot:
+      masterpiece: true
+      complete_album: true
+      year: 2002
+
+  # Miles Davis carries cool-jazz, hard-bop, modal-jazz and jazz-fusion across
+  # the catalog. These entries place albums by era: the acoustic records leave
+  # Jazz Fusion, and the electric period (In a Silent Way onward, and the
+  # 1980s comeback) leaves Cool Jazz, Hard Bop and Modal Jazz. Transitional
+  # records (Miles In The Sky, Filles De Kilimanjaro, Water Babies,
+  # Directions, Circle In The Round) and multi-era compilations keep the
+  # artist tags.
+  Miles Davis:
+    Kind Of Blue:
+      clear_tags: [jazz-fusion, hard-bop]
+      masterpiece: true
+      complete_album: true
+      year: 1959
+      note: Modal and cool.
+    Birth Of The Cool: &miles-cool
+      tags: [cool-jazz]
+      clear_tags: [hard-bop, modal-jazz, jazz-fusion]
+      note: The 1949-1950 nonet sessions.
+    The Complete Birth Of The Cool: *miles-cool
+    E.S.P_: &miles-second-quintet
+      tags: [post-bop]
+      clear_tags: [cool-jazz, jazz-fusion]
+      note: Second quintet studio album.
+    Miles Smiles: *miles-second-quintet
+    Sorcerer: *miles-second-quintet
+    Nefertiti: *miles-second-quintet
+    "'Round About Midnight": &miles-acoustic
+      clear_tags: [jazz-fusion]
+      note: Acoustic era, before 1968.
+    "1951-1959 The Essential Works": *miles-acoustic
+    "1958 Miles": *miles-acoustic
+    "At Newport 1958": *miles-acoustic
+    "At Plugged Nickel, Chicago (Live)": *miles-acoustic
+    "Bags' Groove (RVG Remaster)": *miles-acoustic
+    "Birdland 1951 (Reissue)": *miles-acoustic
+    "Blue Moods": *miles-acoustic
+    "Chronicles - The Complete Prestige Recor": *miles-acoustic
+    "Collectors' Items (RVG Remaster)": *miles-acoustic
+    "Conception": *miles-acoustic
+    "Dig [Original Jazz Classics Remasters]": *miles-acoustic
+    "First Miles (Reissue - Bonus Tracks)": *miles-acoustic
+    "In Paris Festival International de Jazz": *miles-acoustic
+    "Jazz At The Plaza": *miles-acoustic
+    "Miles '54_ The Prestige Recordings (Rema": *miles-acoustic
+    "Miles Ahead": *miles-acoustic
+    "Miles Davis & The Modern Jazz Giants": *miles-acoustic
+    "Miles Davis (Vol. 1)": *miles-acoustic
+    "Miles Davis (Vol. 2)": *miles-acoustic
+    "Miles Davis - In Person Saturday Night A": *miles-acoustic
+    "Miles Davis At Carnegie Hall- The Comple": *miles-acoustic
+    "Miles Davis Quintet_ Freedom Jazz Dance_": *miles-acoustic
+    "Miles In Berlin": *miles-acoustic
+    "Miles In Europe": *miles-acoustic
+    "Miles In Tokyo": *miles-acoustic
+    "Miles in France 1963 & 1964 - Miles Davi": *miles-acoustic
+    "Miles_ The New Miles Davis Quintet [Rudy": *miles-acoustic
+    "Milestones": *miles-acoustic
+    "My Funny Valentine": *miles-acoustic
+    "Olympia 1960 - The Complete Concerts (Re": *miles-acoustic
+    "Porgy And Bess": *miles-acoustic
+    "Quiet Nights": *miles-acoustic
+    "Relaxin' With The Miles Davis Quintet (R": *miles-acoustic
+    "Seven Steps To Heaven": *miles-acoustic
+    "Seven Steps_ The Complete Columbia Recor": *miles-acoustic
+    "Sketches Of Spain 50th Anniversary (Lega": *miles-acoustic
+    "Sketches of Spain (Mono Version)": *miles-acoustic
+    "Someday My Prince Will Come": *miles-acoustic
+    "Steamin' [Rudy Van Gelder edition]": *miles-acoustic
+    "Stockholm 1960 Complete": *miles-acoustic
+    "Take Off_ The Complete Blue Note Albums": *miles-acoustic
+    "The Blue Note And Capitol Recordings": *miles-acoustic
+    "The Classic Prestige Sessions, 1951-1956": *miles-acoustic
+    "The Complete Live At The Plugged Nickel": *miles-acoustic
+    "The Complete Miles Davis Featuring John": *miles-acoustic
+    "The Complete Prestige 10-Inch LP Collect": *miles-acoustic
+    "The Final Tour_ Copenhagen, March 24, 19": *miles-acoustic
+    "The Final Tour_ The Bootleg Series, Vol_": *miles-acoustic
+    "The Legendary Prestige Quintet Sessions": *miles-acoustic
+    "The Musings Of Miles": *miles-acoustic
+    "Walkin'": *miles-acoustic
+    "Workin' With The Miles Davis Quintet (Li": *miles-acoustic
+    "_Four_ & More": *miles-acoustic
+    "In A Silent Way": &miles-electric
+      clear_tags: [cool-jazz, hard-bop, modal-jazz]
+      note: Electric period, 1969-1975 and 1981-1991.
+    "The Complete in a Silent Way Sessions": *miles-electric
+    "Bitches Brew (Legacy Edition)": *miles-electric
+    "The Complete Bitches Brew Sessions": *miles-electric
+    "A Tribute To Jack Johnson": *miles-electric
+    "The Complete Jack Johnson Sessions": *miles-electric
+    "Big Fun": *miles-electric
+    "Live At The Fillmore East (March 7, 1970": *miles-electric
+    "Black Beauty_ Miles Davis At Fillmore We": *miles-electric
+    "Miles Davis At Fillmore_ Live At The Fil": *miles-electric
+    "Miles at The Fillmore_ Miles Davis 1970_": *miles-electric
+    "Isle of Wight (Live)": *miles-electric
+    "The Cellar Door Sessions 1970": *miles-electric
+    "Live - Evil": *miles-electric
+    "The Complete On The Corner Sessions": *miles-electric
+    "Get Up With It": *miles-electric
+    "Miles Davis In Concert_ Live At Philharm": *miles-electric
+    "Agharta": *miles-electric
+    "Dark Magus_ Live At Carnegie Hall": *miles-electric
+    "The Man With The Horn": *miles-electric
+    "We Want Miles": *miles-electric
+    "Star People": *miles-electric
+    "Decoy": *miles-electric
+    "You're Under Arrest": *miles-electric
+    "That's What Happened 1982-1985_ The Boot": *miles-electric
+    "What It Is_ Montreal 7_7_83 (Live)": *miles-electric
+    "Tutu": *miles-electric
+    "Amandla": *miles-electric
+    "AURA": *miles-electric
+    "Live Around The World": *miles-electric
+    "Doo-Bop": *miles-electric
+    "Rubberband": *miles-electric
+    "Rubberband EP": *miles-electric
+    "Merci Miles! Live at Vienne": *miles-electric
+    "The Last Word - The Warner Bros. Years": *miles-electric
+
+  # From Trouble No More (2003) onward Mellencamp records roots and folk
+  # material. These albums move from Heartland Rock to Americana and stay in
+  # the rock playlists.
+  John Mellencamp:
+    "Trouble No More": &mellencamp-americana
+      tags: [americana]
+      clear_tags: [heartland-rock]
+      note: Americana period, 2003 onward.
+    "Performs Trouble No More Live At Town Ha": *mellencamp-americana
+    "Freedom's Road": *mellencamp-americana
+    "Life, Death, Love and Freedom_Life, Deat": *mellencamp-americana
+    "Life, Death, LIVE and Freedom (Digital e": *mellencamp-americana
+    "No Better Than This": *mellencamp-americana
+    "Plain Spoken": *mellencamp-americana
+    "Plain Spoken - From The Chicago Theatre": *mellencamp-americana
+    "Sad Clowns & Hillbillies": *mellencamp-americana
+    "Strictly A One-Eyed Jack": *mellencamp-americana
+    "Orpheus Descending": *mellencamp-americana
+
+  # Studio records whose titles trip version detection. `clear_flags` keeps
+  # each one a studio take.
+  Hole:
+    Live Through This:
+      clear_flags:
+        - live
+      note: Studio album; the title is not a live marker.
+
+  Pat Metheny:
+    We Live Here:
+      clear_flags:
+        - live
+      note: Pat Metheny Group studio album (1995).
+
+  Rush:
+    Vapor Trails (Remixed):
+      clear_flags:
+        - remix
+      note: The 2013 remix of the studio album, not a dance remix.
+
+  Pink Floyd:
+    A Momentary Lapse of Reason (2019 Remix):
+      clear_flags:
+        - remix
+      note: The 2019 remix of the studio album, not a dance remix.
+    Delicate Sound of Thunder (2019 Remix):
+      clear_flags:
+        - remix
+      note: The 2019 remix of the live album; it stays live.
+
+  Korn:
+    "Korn III_ Remember Who You Are (Special":
+      clear_flags: [live]
+      note: Studio album; "Are You Ready To Live?" is a song title.
+
+  # Reissues of live albums whose titles read "(Live_Remix)" or "(Live_Remixed
+  # '94)": a remix of the multitrack, not a dance remix.
+  Buddy Rich:
+    Big Swing Face:
+      clear_flags: [remix]
+      note: Live album remixed for reissue.
+
+  Thad Jones:
+    Live At The Village Vanguard:
+      clear_flags: [remix]
+      note: Live album remixed for its 1994 reissue.
+
+  The Who:
+    Tommy:
+      clear_flags:
+        - remix
+      note: Remixed and remastered editions of the studio album.
+    It's Hard:
+      clear_flags:
+        - remix
+      note: Remixed and remastered edition of the studio album.
+
+  Albert King:
+    Live Wire_Blues Power:
+      flags: [live]
+      note: Concert recording; "Live Wire" is excluded as a song title.
